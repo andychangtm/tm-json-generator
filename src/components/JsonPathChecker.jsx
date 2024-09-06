@@ -1,8 +1,14 @@
 export function JsonPathChecker() {
     return (
         <section className="json-path-checker">
-            <h2>JsonPathGenerator</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta suscipit libero quos. Doloremque recusandae, ab voluptatibus numquam odio alias quisquam labore distinctio ipsa tenetur, exercitationem sequi fugit! Exercitationem, sint placeat.</p>
+            <div className="path">
+                <label className="path_label">JSON Path </label>
+                <input className="path_input"/>
+            </div>
+            <div className="results">
+                <label className="results_label">Evaluation Results</label>
+                <input className="results_output"/>
+            </div>
         </section>
     )
 }
