@@ -26,27 +26,29 @@ export function JsonSchemaGenerator() {
 
     return (
         <section className="schema-generator">
-            <div className="json_input_box">
-                <label className="json_label">JSON Input </label>
-                <textarea
-                    className="json_input"
+            <div className="schema-generator__container">
+                <div className="schema-generator__input">
+                    <label className="schema-generator__label">JSON Input </label>
+                    <textarea
+                    className="schema-generator__inputfield"
                     value={jsonInput}
                     onChange={handleInputChange}
                     placeholder="Enter JSON here..."
                 />
-                <button className="generate_btn" onClick={setCreatedSchema}>
+                <button className="schema-generator__btn" onClick={setCreatedSchema}>
                     Generate Schema
-                </button>            
-            </div>
-            <div className="json_schema">
-                <label className="schema_label">JSON Schema</label>
-                <textarea
-                    className="schema_output"
+                </button>    
+                </div>
+                <div className="schema-generator__output">
+                    <label className="schema-generator__label">JSON Schema</label>
+                    <textarea
+                    className="schema-generator__outputfield"
                     value={jsonSchema}
                     readOnly
                     placeholder="Generated schema will appear here..."
                 />
-                {errorMessage && <div className="error-box">{errorMessage}</div>}
+                {errorMessage && <div className="schema-generator__output-error">{errorMessage}</div>}
+                </div>
             </div>
         </section>
     )

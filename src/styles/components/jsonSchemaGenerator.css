@@ -1,58 +1,56 @@
 .schema-generator {
+    margin: 2rem auto;
+    width: 1080px;
+}
+
+.schema-generator__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem
+}
+
+.schema-generator__label{
+    font-size: large;
+    font-weight: bold;  
+}
+
+/* Input Styles */
+
+.schema-generator__input{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 2rem;
-    
-    .json_input_box{
-        display: flex;
-        flex-direction: column;
-        
-        .json_label{
-            font-size: larger;
-            font-weight: bold;  
-        }
-        .json_input{
-            width: 500px;
-            height: 500px;
-            margin-right: 20px;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        .generate_btn{
-            width: 200px;
-            height: 50px;
-            cursor: pointer;
-            margin-top: 15px;
-            font-size: larger;
-            font-weight: bold;
-        }
-    }
+    flex-direction: column;
+    gap: 1rem
+}
 
-    .json_schema{
-        display: flex;
-        flex-direction: column;
-        .schema_label{
-            font-size: larger;
-            font-weight: bold;  
-        }
-        .schema_output{
-            width: 500px;
-            height: 500px;
-            margin-right: 20px;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        .error-box{
-            border: 1px solid white;
-            background-color: white;
-            color: red;
-            margin-top: 20px;
-            height: 50px;
-            width: 500px;
-            padding: 2px;
-            border-radius: 10px;
-        }
+.schema-generator__inputfield{
+    height: 500px;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+}
+.schema-generator__btn{
+    width: 200px;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+}
 
-    }
+/* Output Styles */
+
+.schema-generator__output {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.schema-generator__outputfield{
+    height: 500px;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+}
+
+.schema-generator__output-error{
+    color: red;
+    font-weight: bold;
+    padding: 2px;
+    border-radius: 10px;
 }

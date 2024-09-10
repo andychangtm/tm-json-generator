@@ -1,37 +1,26 @@
-.json-path-checker{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
+.path-checker {
+    margin: 0 auto;
+    width: 1080px;
+}
 
-    .path{
-        display: flex;
-        flex-direction: column;
-        width: 1000px;
-        .path_label{
-            font-size: large;
-            margin: 10px 0 10px 0;
-            font-weight: bold;
-        }
-        .path_input{
-            height: 30px;
-            border: 1px solid black;
-            border-radius: 10px;
-        }   
-    }
-    .results{
-        display: flex;
-        flex-direction: column;
-        width: 1000px;
-        .results_label{
-            font-size: large;
-            font-weight: bold;
-            margin: 10px 0 10px 0;
-        }
-        .results_output{
-            height: 500px;
-            border: 1px solid black;
-            border-radius: 20px;
-        }
-    }
+.path-checker__input, .path-checker__output{
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.path-checker__label {
+    font-size: large;
+    font-weight: bold;
+}
+
+.path-checker__inputfield {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+}
+
+.path-checker__outputfield {
+    height: 500px;
+    background-color: #1a1a1a;
+    border: 1px solid #444;
 }
