@@ -23,12 +23,13 @@ export function JsonPathChecker() {
     };
 
     return (
-        <section className="json-path-checker">
-            <div className="path">
-                <label className="path_label">JSON Path </label>
+        <section className="path-checker">
+            <div className="path-checker__container">
+                <div className="path-checker__input">
+                <label className="path-checker__label">JSON Path </label>
                 <input
                     type="text"
-                    className="path_input"
+                    className="path-checker__inputfield"
                     value={jsonPath}
                     onChange={handleJsonPathChange}
                     placeholder="Enter JSON Path query... Start with $."
@@ -36,11 +37,12 @@ export function JsonPathChecker() {
                 <button className="path_evaluate_btn" onClick={evaluateJsonPath}>
                     Evaluate JSON Path
                 </button>
+                </div>
             </div>
-            <div className="results">
-                <label className="results_label">Evaluation Results</label>
+            <div className="path-checker__output">
+                <label className="path-checker__label">Evaluation Results</label>
                 <textarea
-                    className="results_output"
+                    className="path-checker__outputfield"
                     value={jsonPathResult}
                     readOnly
                     placeholder="JSON Path result will appear here..."
