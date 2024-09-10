@@ -1,15 +1,18 @@
-import {  Header, JsonPathChecker, JsonSchemaGenerator, Footer } from './components'
+import {  Header, JsonPathChecker, JsonSchemaGenerator, Footer, JsonProvider} from './components'
 
 function App() {
 
   return (
     <>
-      <Header />
-      <JsonSchemaGenerator />
-      <JsonPathChecker />
-      <Footer/>
+      <JsonProvider>
+        <Header />
+        <JsonSchemaGenerator />
+        <JsonPathChecker />
+        <Footer/>
+      </JsonProvider>
+      
     </>
-  )
+  );
 }
 
 export default App

@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { createSchema } from "../schema-builder"
-
+import { useJsonData } from "./JsonContext"
+import { useJsonContextDispatch } from "./JsonContext";
 
 
 export function JsonSchemaGenerator() {
 
-    const [jsonInput, setJsonInput] = useState(localStorage.getItem("json_input") || "");
+    const {jsonInput} = useJsonData();
+    const { handleInputChange } = useJsonContextDispatch()
     const [jsonSchema, setJsonSchema] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -17,11 +19,6 @@ export function JsonSchemaGenerator() {
         } catch (error) {
             setErrorMessage("Invalid JSON! Try Again!");
         }
-    };
-
-    const handleInputChange = (e) => {
-        setJsonInput(e.target.value);
-        localStorage.setItem("json_input", e.target.value);
     };
 
     return (
