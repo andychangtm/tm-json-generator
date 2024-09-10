@@ -3,6 +3,48 @@
     width: 1080px;
 }
 
+
+    .path{
+        display: flex;
+        flex-direction: column;
+        width: 1000px;
+        .path_label{
+            font-size: large;
+            margin: 10px 0 10px 0;
+            font-weight: bold;
+        }
+        .path_input{
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }   
+        
+        .path_evaluate_btn{
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: larger;
+            font-weight: bold;
+        }
+    }
+    .results{
+        display: flex;
+        flex-direction: column;
+        width: 1000px;
+        .results_label{
+            font-size: large;
+            font-weight: bold;
+            margin: 10px 0 10px 0;
+        }
+        .results_output{
+            height: 500px;
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 10px;
+        }
+    }
+
 .path-checker__input, .path-checker__output{
     display: grid;
     gap: 1rem;
@@ -23,4 +65,5 @@
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
+
 }
