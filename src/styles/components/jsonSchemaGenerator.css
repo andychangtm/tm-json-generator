@@ -9,41 +9,46 @@
     gap: 2rem
 }
 
-.json_input_box {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem
-}
-
-.json_schema {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem
-}
-
-
-.json_label, .schema_label{
+.schema-generator__label{
     font-size: large;
     font-weight: bold;  
 }
-.json_input{
+
+/* Input Styles */
+
+.schema-generator__input{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.schema-generator__inputfield{
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
 }
-.generate_btn{
+.schema-generator__btn{
     width: 200px;
     cursor: pointer;
     font-size: large;
     font-weight: bold;
 }
 
-.schema_output{
+/* Output Styles */
+
+.schema-generator__output {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+.schema-generator__outputfield{
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
 }
-.error-box{
+
+.schema-generator__output-error{
     color: red;
     font-weight: bold;
     padding: 2px;

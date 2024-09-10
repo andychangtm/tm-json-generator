@@ -3,24 +3,23 @@
     width: 1080px;
 }
 
-.path, .results{
+.path-checker__input, .path-checker__output{
     display: grid;
     gap: 1rem;
     margin-bottom: 2rem;
 }
 
-
-.path_label, .results_label {
+.path-checker__label {
     font-size: large;
     font-weight: bold;
 }
 
-.path_input {
+.path-checker__inputfield {
     background-color: #1a1a1a;
     border: 1px solid #444;
 }
 
-.results_output {
+.path-checker__outputfield {
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
