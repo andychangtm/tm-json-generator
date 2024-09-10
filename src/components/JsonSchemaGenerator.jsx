@@ -1,8 +1,16 @@
 export function JsonSchemaGenerator() {
     return (
-        <section className="json-schema-generator">
-            <h2>JsonSchemaGenerator</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta suscipit libero quos. Doloremque recusandae, ab voluptatibus numquam odio alias quisquam labore distinctio ipsa tenetur, exercitationem sequi fugit! Exercitationem, sint placeat.</p>
+        <section className="schema-generator">
+            <div className="json_input_box">
+                <label className="json_label">JSON Input </label>
+                <input className="json_input"/>
+                <button className="generate_btn">Generate Schema</button>
+            </div>
+            <div className="json_schema">
+                <label className="schema_label">JSON Schema</label>
+                <input className="schema_output"/>
+                <div className="error-box">Error message</div>
+            </div>
         </section>
     )
 }

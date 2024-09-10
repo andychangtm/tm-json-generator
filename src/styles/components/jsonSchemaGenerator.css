@@ -1,4 +1,56 @@
-.json-schema-generator {
-    border: 1px solid green;
+.schema-generator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-bottom: 2rem;
+    
+    .json_input_box{
+        display: flex;
+        flex-direction: column;
+        
+        .json_label{
+            font-size: larger;
+            font-weight: bold;  
+        }
+        .json_input{
+            width: 500px;
+            height: 500px;
+            margin-right: 20px;
+            border-radius: 20px;
+        }
+        .generate_btn{
+            width: 200px;
+            height: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: larger;
+            font-weight: bold;
+        }
+    }
+
+    .json_schema{
+        display: flex;
+        flex-direction: column;
+        .schema_label{
+            font-size: larger;
+            font-weight: bold;  
+        }
+        .schema_output{
+            width: 500px;
+            height: 500px;
+            margin-right: 20px;
+            border-radius: 20px;
+        }
+        .error-box{
+            border: 1px solid white;
+            background-color: white;
+            color: red;
+            margin-top: 20px;
+            height: 50px;
+            width: 500px;
+            padding: 2px;
+            border-radius: 10px;
+        }
+
+    }
 }
