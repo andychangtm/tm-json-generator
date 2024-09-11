@@ -14,11 +14,10 @@ export function useJsonContextDispatch(){
 export function JsonProvider({children}){
     const [jsonInput, setJsonInput] = useState(localStorage.getItem("json_input") || "");
 
-    const handleInputChange = (e) => {
-        setJsonInput(e.target.value);
-        localStorage.setItem("json_input", e.target.value)
+    const handleInputChange = (value) => {
+        setJsonInput(value);
+        localStorage.setItem("json_input", value);
     };
-
 
     return (
         <JsonContext.Provider value={{ jsonInput, setJsonInput }}>

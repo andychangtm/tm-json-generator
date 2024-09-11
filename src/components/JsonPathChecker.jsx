@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
+import JSON5 from "json5"
 import jsonpath from "jsonpath";
 import { useJsonData } from "./JsonContext";
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { EditorView } from '@codemirror/view';
+
 
 export function JsonPathChecker() {
     const {jsonInput} = useJsonData();
@@ -9,7 +15,7 @@ export function JsonPathChecker() {
 
     const evaluateJsonPath = (path) => {
         try {
-            const parsedJson = JSON.parse(jsonInput);
+            const parsedJson = JSON5.parse(jsonInput);
             const result = jsonpath.query(parsedJson, path);
             setJsonPathResult(JSON.stringify(result, null, 2));
         } catch (error) {
@@ -39,12 +45,13 @@ export function JsonPathChecker() {
             </div>
             <div className="path-checker__output">
                 <label className="path-checker__label">Evaluation Results</label>
-                <textarea
-                    className="path-checker__outputfield"
-                    value={jsonPathResult}
-                    readOnly
-                    placeholder="JSON Path result will appear here..."
-                />
+                    <CodeMirror
+                        value={jsonPathResult}
+                        height="500px"
+                        theme={vscodeDark}
+                        extensions={[json(), EditorView.lineWrapping]}
+                        readOnly
+                    />
             </div>
         </section>
     );

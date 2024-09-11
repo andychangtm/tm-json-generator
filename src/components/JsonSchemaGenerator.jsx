@@ -3,6 +3,11 @@ import JSON5 from "json5"
 import { createSchema } from "../schema-builder"
 import { useJsonData } from "./JsonContext"
 import { useJsonContextDispatch } from "./JsonContext";
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { EditorView } from '@codemirror/view';
+
 
 
 export function JsonSchemaGenerator() {
@@ -18,7 +23,7 @@ export function JsonSchemaGenerator() {
             setJsonSchema(JSON.stringify(schema, null, 2));
             setErrorMessage("");
         } catch (error) {
-            setErrorMessage("Invalid JSON! Try Again!");
+            setErrorMessage(`Error: ${error.message}`);
         }
     };
 
@@ -27,24 +32,28 @@ export function JsonSchemaGenerator() {
             <div className="schema-generator__container">
                 <div className="schema-generator__input">
                     <label className="schema-generator__label">JSON Input </label>
-                    <textarea
-                    className="schema-generator__inputfield"
-                    value={jsonInput}
-                    onChange={handleInputChange}
-                    placeholder="Enter valid JSON to generate a schema..."
-                />
+                    <CodeMirror
+                        value={jsonInput}
+                        height="500px"
+                        theme={vscodeDark}
+                        placeholder="Hello"
+                        extensions={[json(), EditorView.lineWrapping]}
+                        onChange={(value) => handleInputChange(value)}
+                    />
+                
                 <button className="schema-generator__btn" onClick={setCreatedSchema}>
                     Generate Schema
                 </button>    
                 </div>
                 <div className="schema-generator__output">
                     <label className="schema-generator__label">JSON Schema</label>
-                    <textarea
-                    className="schema-generator__outputfield"
-                    value={jsonSchema}
-                    readOnly
-                    placeholder="Generated schema will appear here..."
-                />
+                    <CodeMirror
+                        value={jsonSchema}
+                        height="500px"
+                        theme={vscodeDark}
+                        extensions={[json(), EditorView.lineWrapping]}
+                        readOnly
+                    />
                 {errorMessage && <div className="schema-generator__output-error">{errorMessage}</div>}
                 </div>
             </div>
