@@ -32,22 +32,23 @@ export function JsonPathChecker() {
     return (
         <section className="path-checker">
             <div className="path-checker__container">
-                <div className="path-checker__input">
+                <div className="path-checker__fields">
                     <label className="path-checker__label">JSON Path </label>
                     <input
                         type="text"
-                        className="path-checker__inputfield"
+                        className="path-checker__input"
                         value={jsonPath}
                         onChange={handleJsonPathChange}
                         placeholder="Enter JSON path... Start with $."
                     />
                 </div>
             </div>
-            <div className="path-checker__output">
+            <div className="path-checker__fields">
                 <label className="path-checker__label">Evaluation Results</label>
                     <CodeMirror
                         value={jsonPathResult}
                         height="500px"
+                        className="codemirror__editor"
                         theme={vscodeDark}
                         extensions={[json(), EditorView.lineWrapping]}
                         readOnly

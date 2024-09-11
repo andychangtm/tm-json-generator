@@ -1,5 +1,5 @@
-.schema-generator {
-    margin: 2rem auto;
+.schema-generator, .path-checker  {
+    margin: 1rem auto 3rem auto;
     width: 1080px;
 }
 
@@ -9,44 +9,14 @@
     gap: 2rem
 }
 
-.schema-generator__label{
-    font-size: large;
-    font-weight: bold;  
-}
-
-/* Input Styles */
-
-.schema-generator__input{
+.schema-generator__fields{
     display: flex;
     flex-direction: column;
     gap: 1rem
 }
 
-.schema-generator__inputfield{
-    height: 500px;
-    background-color: #1a1a1a;
-    border: 1px solid #444;
-    resize: none;
-    padding: 0.5rem;
-}
 .schema-generator__btn{
     width: 200px;
-}
-
-/* Output Styles */
-
-.schema-generator__output {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem
-}
-
-.schema-generator__outputfield{
-    height: 500px;
-    background-color: #1a1a1a;
-    border: 1px solid #444;
-    resize: none;
-    padding: 0.5rem;
 }
 
 .schema-generator__output-error{
@@ -54,4 +24,21 @@
     font-weight: bold;
     padding: 2px;
     border-radius: 10px;
+}
+
+.path-checker__fields{
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+.path-checker__input {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+    padding: 1rem;
+}
+
+.codemirror__editor {
+    font-size: 0.8rem;
 }

@@ -30,11 +30,12 @@ export function JsonSchemaGenerator() {
     return (
         <section className="schema-generator">
             <div className="schema-generator__container">
-                <div className="schema-generator__input">
+                <div className="schema-generator__fields">
                     <label className="schema-generator__label">JSON Input </label>
                     <CodeMirror
                         value={jsonInput}
                         height="500px"
+                        className="codemirror__editor"
                         theme={vscodeDark}
                         placeholder="Hello"
                         extensions={[json(), EditorView.lineWrapping]}
@@ -45,11 +46,12 @@ export function JsonSchemaGenerator() {
                     Generate Schema
                 </button>    
                 </div>
-                <div className="schema-generator__output">
+                <div className="schema-generator__fields">
                     <label className="schema-generator__label">JSON Schema</label>
                     <CodeMirror
                         value={jsonSchema}
                         height="500px"
+                        className="codemirror__editor"
                         theme={vscodeDark}
                         extensions={[json(), EditorView.lineWrapping]}
                         readOnly
