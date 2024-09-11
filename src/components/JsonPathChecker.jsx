@@ -12,6 +12,7 @@ export function JsonPathChecker() {
     const {jsonInput} = useJsonData();
     const [jsonPath, setJsonPath] = useState("");
     const [jsonPathResult, setJsonPathResult] = useState("");
+    const [copyButtonText, setCopyButtonText] = useState("Copy Path");
 
     const evaluateJsonPath = (path) => {
         try {
@@ -29,6 +30,21 @@ export function JsonPathChecker() {
         evaluateJsonPath(newPath);
     };
 
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(jsonPath);
+            setCopyButtonText("Copied ✓");
+            setTimeout(() => setCopyButtonText("Copy Path"), 2000);
+        } catch (error) {
+            console.error("Failed to copy schema:", error);
+        }
+    };
+
+    const clearPath = () => {
+        setJsonPath("");
+        setJsonPathResult("");
+    };
+
     return (
         <section className="path-checker">
             <div className="path-checker__container">
@@ -41,6 +57,14 @@ export function JsonPathChecker() {
                         onChange={handleJsonPathChange}
                         placeholder="Enter JSON path... Start with $."
                     />
+                    <div className="tool-actions">    
+                    <button onClick={clearPath}>
+                        Clear Path
+                    </button>
+                    <button onClick={copyToClipboard}>
+                        {copyButtonText}
+                    </button>
+                    </div>
                 </div>
             </div>
             <div className="path-checker__fields">
