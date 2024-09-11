@@ -15,11 +15,7 @@
     gap: 1rem
 }
 
-.schema-generator__btn{
-    width: 150px;
-}
-
-.schema-generator__actions {
+.tool-actions {
     display: flex;
     gap: 1rem;
 }

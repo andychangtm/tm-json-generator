@@ -13,6 +13,7 @@ export function JsonSchemaGenerator() {
     const { jsonInput } = useJsonData();
     const { handleInputChange } = useJsonContextDispatch();
     const [jsonSchema, setJsonSchema] = useState("");
+    const [copyButtonText, setCopyButtonText] = useState("Copy Schema");
 
     const setCreatedSchema = () => {
         try {
@@ -26,6 +27,8 @@ export function JsonSchemaGenerator() {
     const copyToClipboard = async () => {
         try {
             await navigator.clipboard.writeText(jsonSchema);
+            setCopyButtonText("Copied ✓");
+            setTimeout(() => setCopyButtonText("Copy Schema"), 2000);
         } catch (error) {
             console.error("Failed to copy schema:", error);
         }
@@ -33,7 +36,7 @@ export function JsonSchemaGenerator() {
 
     const clearInput = () => {
         handleInputChange("");
-        setJsonSchema("")
+        setJsonSchema("");
     };
 
     return (
@@ -50,11 +53,11 @@ export function JsonSchemaGenerator() {
                         extensions={[json(), EditorView.lineWrapping]}
                         onChange={(value) => handleInputChange(value)}
                     />
-                    <div className="schema-generator__actions">
-                        <button className="schema-generator__btn" onClick={setCreatedSchema}>
+                    <div className="tool-actions">
+                        <button onClick={setCreatedSchema}>
                             Generate Schema
                         </button>
-                        <button className="schema-generator__btn" onClick={clearInput}>
+                        <button onClick={clearInput}>
                             Clear Input
                         </button>
                     </div>
@@ -71,8 +74,8 @@ export function JsonSchemaGenerator() {
                         readOnly
                     />
                     
-                    <button className="schema-generator__btn" onClick={copyToClipboard}>
-                        Copy Schema
+                    <button onClick={copyToClipboard}>
+                        {copyButtonText}
                     </button>
                 </div>
             </div>

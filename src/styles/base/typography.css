@@ -9,6 +9,6 @@ input, textarea {
 
 button {
     font-size: small;
-    font-weight: bold;
+    font-weight: 600;
     font-family: inherit;
 }
