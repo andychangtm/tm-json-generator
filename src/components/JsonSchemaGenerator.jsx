@@ -1,4 +1,5 @@
 import { useState } from "react"
+import JSON5 from "json5"
 import { createSchema } from "../schema-builder"
 import { useJsonData } from "./JsonContext"
 import { useJsonContextDispatch } from "./JsonContext";
@@ -13,7 +14,7 @@ export function JsonSchemaGenerator() {
 
     const setCreatedSchema = () => {
         try {
-            const schema = createSchema(JSON.parse(jsonInput));
+            const schema = createSchema(JSON5.parse(jsonInput));
             setJsonSchema(JSON.stringify(schema, null, 2));
             setErrorMessage("");
         } catch (error) {
