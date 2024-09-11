@@ -1,0 +1,9 @@
+input, textarea {
+    font-family: monospace;
+}
+
+button {
+    font-size: medium;
+    font-weight: bold;
+    font-family: inherit;
+}

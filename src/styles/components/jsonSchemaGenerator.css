@@ -31,9 +31,6 @@
 }
 .schema-generator__btn{
     width: 200px;
-    cursor: pointer;
-    font-size: large;
-    font-weight: bold;
 }
 
 /* Output Styles */
@@ -57,13 +54,4 @@
     font-weight: bold;
     padding: 2px;
     border-radius: 10px;
-}
-
-
-/* Global */ 
-
-textarea:focus, input:focus {
-    outline: none;
-    border-color: #888;
-    box-shadow: 0 0 2px #888;
 }
