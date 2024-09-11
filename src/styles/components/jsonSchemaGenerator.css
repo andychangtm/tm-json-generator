@@ -1,5 +1,5 @@
-.schema-generator {
-    margin: 2rem auto;
+.schema-generator, .path-checker  {
+    margin: 1rem auto 3rem auto;
     width: 1080px;
 }
 
@@ -9,48 +9,31 @@
     gap: 2rem
 }
 
-.schema-generator__label{
-    font-size: large;
-    font-weight: bold;  
-}
-
-/* Input Styles */
-
-.schema-generator__input{
+.schema-generator__fields{
     display: flex;
     flex-direction: column;
     gap: 1rem
 }
 
-.schema-generator__inputfield{
-    height: 500px;
-    background-color: #1a1a1a;
-    border: 1px solid #444;
-}
-.schema-generator__btn{
-    width: 200px;
-    cursor: pointer;
-    font-size: large;
-    font-weight: bold;
-}
-
-/* Output Styles */
-
-.schema-generator__output {
+.tool-actions {
     display: flex;
-    flex-direction: column;
-    gap: 1rem
+    gap: 1rem;
 }
 
-.schema-generator__outputfield{
-    height: 500px;
-    background-color: #1a1a1a;
-    border: 1px solid #444;
+.path-checker__fields{
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.schema-generator__output-error{
-    color: red;
-    font-weight: bold;
-    padding: 2px;
-    border-radius: 10px;
+
+.path-checker__input {
+    background-color: #1E1E1E;
+    border: 1px solid transparent;
+    padding: 1rem;
+    color: #9cdcfe;
+}
+
+.codemirror__editor {
+    font-size: 0.8rem;
 }

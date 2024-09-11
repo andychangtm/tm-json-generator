@@ -1,52 +1,84 @@
-import { useState } from "react"
-import { createSchema } from "../schema-builder"
-import { useJsonData } from "./JsonContext"
+import { useState } from "react";
+import JSON5 from "json5";
+import { createSchema } from "../schema-builder";
+import { useJsonData } from "./JsonContext";
 import { useJsonContextDispatch } from "./JsonContext";
-
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { EditorView } from '@codemirror/view';
 
 export function JsonSchemaGenerator() {
 
-    const {jsonInput} = useJsonData();
-    const { handleInputChange } = useJsonContextDispatch()
+    const { jsonInput } = useJsonData();
+    const { handleInputChange } = useJsonContextDispatch();
     const [jsonSchema, setJsonSchema] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    const [copyButtonText, setCopyButtonText] = useState("Copy Schema");
 
     const setCreatedSchema = () => {
         try {
-            const schema = createSchema(JSON.parse(jsonInput));
+            const schema = createSchema(JSON5.parse(jsonInput));
             setJsonSchema(JSON.stringify(schema, null, 2));
-            setErrorMessage("");
         } catch (error) {
-            setErrorMessage("Invalid JSON! Try Again!");
+            setJsonSchema(`Error: ${error.message}`);
         }
+    };
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(jsonSchema);
+            setCopyButtonText("Copied ✓");
+            setTimeout(() => setCopyButtonText("Copy Schema"), 2000);
+        } catch (error) {
+            console.error("Failed to copy schema:", error);
+        }
+    };
+
+    const clearInput = () => {
+        handleInputChange("");
+        setJsonSchema("");
     };
 
     return (
         <section className="schema-generator">
             <div className="schema-generator__container">
-                <div className="schema-generator__input">
-                    <label className="schema-generator__label">JSON Input </label>
-                    <textarea
-                    className="schema-generator__inputfield"
-                    value={jsonInput}
-                    onChange={handleInputChange}
-                    placeholder="Enter JSON here..."
-                />
-                <button className="schema-generator__btn" onClick={setCreatedSchema}>
-                    Generate Schema
-                </button>    
+                <div className="schema-generator__fields">
+                    <label className="schema-generator__label">JSON Input</label>
+                    <CodeMirror
+                        value={jsonInput}
+                        height="500px"
+                        className="codemirror__editor"
+                        theme={vscodeDark}
+                        placeholder="Enter JSON here"
+                        extensions={[json(), EditorView.lineWrapping]}
+                        onChange={(value) => handleInputChange(value)}
+                    />
+                    <div className="tool-actions">
+                        <button onClick={setCreatedSchema}>
+                            Generate Schema
+                        </button>
+                        <button onClick={clearInput}>
+                            Clear Input
+                        </button>
+                    </div>
                 </div>
-                <div className="schema-generator__output">
+
+                <div className="schema-generator__fields">
                     <label className="schema-generator__label">JSON Schema</label>
-                    <textarea
-                    className="schema-generator__outputfield"
-                    value={jsonSchema}
-                    readOnly
-                    placeholder="Generated schema will appear here..."
-                />
-                {errorMessage && <div className="schema-generator__output-error">{errorMessage}</div>}
+                    <CodeMirror
+                        value={jsonSchema}
+                        height="500px"
+                        className="codemirror__editor"
+                        theme={vscodeDark}
+                        extensions={[json(), EditorView.lineWrapping]}
+                        readOnly
+                    />
+                    
+                    <button onClick={copyToClipboard}>
+                        {copyButtonText}
+                    </button>
                 </div>
             </div>
         </section>
-    )
+    );
 }

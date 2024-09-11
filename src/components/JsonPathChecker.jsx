@@ -1,53 +1,83 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import JSON5 from "json5"
 import jsonpath from "jsonpath";
-import { useJsonData } from "./JsonContext"
+import { useJsonData } from "./JsonContext";
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { EditorView } from '@codemirror/view';
+
 
 export function JsonPathChecker() {
-
     const {jsonInput} = useJsonData();
-    const [jsonPath, setJsonPath] = useState(""); 
+    const [jsonPath, setJsonPath] = useState("");
     const [jsonPathResult, setJsonPathResult] = useState("");
+    const [copyButtonText, setCopyButtonText] = useState("Copy Path");
 
-    const handleJsonPathChange = (e) => {
-        setJsonPath(e.target.value);
-    };
-
-    const evaluateJsonPath = () => {
+    const evaluateJsonPath = (path) => {
         try {
-            const parsedJson = JSON.parse(jsonInput);
-            const result = jsonpath.query(parsedJson, jsonPath);
+            const parsedJson = JSON5.parse(jsonInput);
+            const result = jsonpath.query(parsedJson, path);
             setJsonPathResult(JSON.stringify(result, null, 2));
         } catch (error) {
-            setJsonPathResult("Invalid Path")
+            setJsonPathResult("No Match");
         }
+    };
+
+    const handleJsonPathChange = (e) => {
+        const newPath = e.target.value;
+        setJsonPath(newPath);
+        evaluateJsonPath(newPath);
+    };
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(jsonPath);
+            setCopyButtonText("Copied ✓");
+            setTimeout(() => setCopyButtonText("Copy Path"), 2000);
+        } catch (error) {
+            console.error("Failed to copy schema:", error);
+        }
+    };
+
+    const clearPath = () => {
+        setJsonPath("");
+        setJsonPathResult("");
     };
 
     return (
         <section className="path-checker">
             <div className="path-checker__container">
-                <div className="path-checker__input">
-                <label className="path-checker__label">JSON Path </label>
-                <input
-                    type="text"
-                    className="path-checker__inputfield"
-                    value={jsonPath}
-                    onChange={handleJsonPathChange}
-                    placeholder="Enter JSON Path query... Start with $."
-                />
-                <button className="path_evaluate_btn" onClick={evaluateJsonPath}>
-                    Evaluate JSON Path
-                </button>
+                <div className="path-checker__fields">
+                    <label className="path-checker__label">JSON Path </label>
+                    <input
+                        type="text"
+                        className="path-checker__input"
+                        value={jsonPath}
+                        onChange={handleJsonPathChange}
+                        placeholder="Enter JSON path... Start with $."
+                    />
+                    <div className="tool-actions">    
+                    <button onClick={clearPath}>
+                        Clear Path
+                    </button>
+                    <button onClick={copyToClipboard}>
+                        {copyButtonText}
+                    </button>
+                    </div>
                 </div>
             </div>
-            <div className="path-checker__output">
+            <div className="path-checker__fields">
                 <label className="path-checker__label">Evaluation Results</label>
-                <textarea
-                    className="path-checker__outputfield"
-                    value={jsonPathResult}
-                    readOnly
-                    placeholder="JSON Path result will appear here..."
-                />
+                    <CodeMirror
+                        value={jsonPathResult}
+                        height="500px"
+                        className="codemirror__editor"
+                        theme={vscodeDark}
+                        extensions={[json(), EditorView.lineWrapping]}
+                        readOnly
+                    />
             </div>
         </section>
-    )
+    );
 }
