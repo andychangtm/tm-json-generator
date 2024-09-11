@@ -26,6 +26,8 @@
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
+    resize: none;
+    padding: 0.5rem;
 }
 .schema-generator__btn{
     width: 200px;
@@ -46,6 +48,8 @@
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
+    resize: none;
+    padding: 0.5rem;
 }
 
 .schema-generator__output-error{
@@ -53,4 +57,13 @@
     font-weight: bold;
     padding: 2px;
     border-radius: 10px;
+}
+
+
+/* Global */ 
+
+textarea:focus, input:focus {
+    outline: none;
+    border-color: #888;
+    box-shadow: 0 0 2px #888;
 }

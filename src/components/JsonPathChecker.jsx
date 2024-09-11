@@ -33,7 +33,7 @@ export function JsonPathChecker() {
                         className="path-checker__inputfield"
                         value={jsonPath}
                         onChange={handleJsonPathChange}
-                        placeholder="Enter JSON Path query... Start with $."
+                        placeholder="Enter JSON path... Start with $."
                     />
                 </div>
             </div>

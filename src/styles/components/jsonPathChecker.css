@@ -59,11 +59,14 @@
 .path-checker__inputfield {
     background-color: #1a1a1a;
     border: 1px solid #444;
+    padding: 1rem;
 }
 
 .path-checker__outputfield {
     height: 500px;
     background-color: #1a1a1a;
     border: 1px solid #444;
+    resize: none;
+    padding: 0.5rem;
 
 }

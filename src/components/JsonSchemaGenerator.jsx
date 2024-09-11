@@ -31,7 +31,7 @@ export function JsonSchemaGenerator() {
                     className="schema-generator__inputfield"
                     value={jsonInput}
                     onChange={handleInputChange}
-                    placeholder="Enter JSON here..."
+                    placeholder="Enter valid JSON to generate a schema..."
                 />
                 <button className="schema-generator__btn" onClick={setCreatedSchema}>
                     Generate Schema
