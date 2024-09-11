@@ -16,14 +16,12 @@
 }
 
 .schema-generator__btn{
-    width: 200px;
+    width: 150px;
 }
 
-.schema-generator__output-error{
-    color: red;
-    font-weight: bold;
-    padding: 2px;
-    border-radius: 10px;
+.schema-generator__actions {
+    display: flex;
+    gap: 1rem;
 }
 
 .path-checker__fields{
@@ -34,9 +32,10 @@
 
 
 .path-checker__input {
-    background-color: #1a1a1a;
-    border: 1px solid #444;
+    background-color: #1E1E1E;
+    border: 1px solid transparent;
     padding: 1rem;
+    color: #9cdcfe;
 }
 
 .codemirror__editor {
