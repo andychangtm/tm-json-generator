@@ -24,6 +24,10 @@ export function JsonSchemaGenerator() {
         }
     };
 
+    const handleSchemaChange = (value) => {
+        setJsonSchema(value);
+    };
+
     const copyToClipboard = async () => {
         try {
             await navigator.clipboard.writeText(jsonSchema);
@@ -71,7 +75,7 @@ export function JsonSchemaGenerator() {
                         className="codemirror__editor"
                         theme={vscodeDark}
                         extensions={[json(), EditorView.lineWrapping]}
-                        readOnly
+                        onChange={(value) => handleSchemaChange(value)}
                     />
                     
                     <button onClick={copyToClipboard}>
