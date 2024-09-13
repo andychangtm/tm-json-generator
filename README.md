@@ -1,3 +1,5 @@
-# TM Query JSON Generator
+# TM JSON Toolkit
 
-![Wireframe](/misc/design_plan.png)
+![Wireframe](/docs/wireframeV1.png)
+![Wireframe](/docs/wireframeV2.png)
+![Wireframe](/docs/wireframeV3.png)
