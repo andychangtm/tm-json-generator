@@ -9,12 +9,12 @@ import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { EditorView } from '@codemirror/view';
 
 export function JsonSchemaGenerator() {
-
     const { jsonInput } = useJsonData();
     const { handleInputChange } = useJsonContextDispatch();
     const [jsonSchema, setJsonSchema] = useState("");
     const [copyButtonText, setCopyButtonText] = useState("Copy Schema");
 
+    // Parse the jsonInput to createSchema
     const setCreatedSchema = () => {
         try {
             const schema = createSchema(JSON5.parse(jsonInput));
@@ -24,10 +24,12 @@ export function JsonSchemaGenerator() {
         }
     };
 
+    // When schema change set the new value to state
     const handleSchemaChange = (value) => {
         setJsonSchema(value);
     };
 
+    // Handle when on copyToClipboard
     const copyToClipboard = async () => {
         try {
             await navigator.clipboard.writeText(jsonSchema);
@@ -38,6 +40,7 @@ export function JsonSchemaGenerator() {
         }
     };
 
+    // Handle clear the input
     const clearInput = () => {
         handleInputChange("");
         setJsonSchema("");
