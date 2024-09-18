@@ -30,11 +30,19 @@ export function JsonPathChecker() {
     // Utility function to recursively extract all paths
     const getAllJsonPaths = (obj, currentPath = '$', paths = []) => {
         if (typeof obj === 'object' && obj !== null) {
-            for (let key in obj) {
-                const newPath = `${currentPath}.${key}`;
-                paths.push(newPath);
-                getAllJsonPaths(obj[key], newPath, paths);
+            if (Array.isArray(obj)) {
+                obj.forEach((item, index) => {
+                    const newPath = `${currentPath}[${index}]`;
+                    getAllJsonPaths(item, newPath, paths);
+                });
+            } else {
+                for (let key in obj) {
+                    const newPath = `${currentPath}.${key}`;
+                    getAllJsonPaths(obj[key], newPath, paths);
+                }
             }
+        } else {
+            paths.push(currentPath);
         }
         return paths;
     };
