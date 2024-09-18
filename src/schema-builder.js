@@ -26,7 +26,7 @@ function createSchemaForArray(arr, options) {
     }
     const elementSchemas = arr.map((value) => createSchemaFor(value, options));
     const items = combineSchemas(elementSchemas);
-    return { type: 'array', minItems: 1, items: [items] };
+    return { type: 'array', minItems: 1, items: items };
 }
 
 function createSchemaForObject(obj, options) {
